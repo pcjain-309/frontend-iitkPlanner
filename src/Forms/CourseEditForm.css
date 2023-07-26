@@ -1,0 +1,69 @@
+/* CourseEditForm.css */
+.course-form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.course-form div {
+  margin-bottom: 10px;
+}
+
+.course-form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.course-form input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.course-form select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.course-form button {
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.course-form button[type="submit"] {
+  background-color: #28a745;
+}
+
+.course-form button[type="button"] {
+  background-color: #dc3545;
+}
+
+/* Additional Styling for Timings Section */
+
+.timings-section {
+  margin-top: 20px;
+}
+
+.timing-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.timing-start,
+.timing-end {
+  flex: 1;
+}
+
+/* End CourseEditForm.css */

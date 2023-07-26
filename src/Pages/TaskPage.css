@@ -1,0 +1,14 @@
+.container {
+    display: flex;
+  }
+  
+  .sidebar {
+    /* Sidebar styling (you can use the previous sidebar styling here) */
+  }
+  
+  /* Add any additional styling for the sidebar as needed */
+  
+  .content {
+    flex: 1;
+    padding: 20px;
+  }

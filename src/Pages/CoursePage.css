@@ -1,0 +1,116 @@
+/* CoursePage.css */
+.course-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .course-page h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .course-page .content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .course-page .course-form-container {
+    flex: 1 0 300px;
+    margin-right: 20px;
+  }
+  
+  .course-page .course-list-container {
+    flex: 1 0 300px;
+    margin-right: 20px;
+  }
+  
+  .course-page .course-edit-form-container {
+    flex: 1 0 300px;
+  }
+  
+  @media (max-width: 768px) {
+    .course-page .content {
+      flex-direction: column;
+    }
+  }
+
+/* CourseList.css */
+/* CourseList.css */
+/* CourseList.css */
+
+.course-list-container {
+  padding: 20px;
+}
+
+.course-list {
+  list-style: none;
+  padding: 0;
+}
+
+.course-list li {
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.course-code {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.course-credits {
+  font-size: 14px;
+  color: #666;
+}
+
+.course-name {
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+.timings-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.timings-list li {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.timing-day {
+  width: 100px;
+  font-weight: bold;
+  margin: 10px;
+}
+
+.timing-start,
+.timing-end {
+  margin-left: 10px;
+}
+
+/*.timing-start::before,*/
+/*.timing-end::before {*/
+/*  content: '-';*/
+/*  margin-right: 5px;*/
+/*}*/
+
+.course-list button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.course-list button:hover {
+  background-color: #0056b3;
+}

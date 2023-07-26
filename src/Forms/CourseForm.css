@@ -1,0 +1,52 @@
+/* CourseForm.css */
+
+.course-form {
+  padding: 20px;
+  border: 1px solid #ddd;
+}
+
+.course-form h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.course-form div {
+  margin-bottom: 10px;
+}
+
+.course-form label {
+  display: block;
+  font-weight: bold;
+}
+
+.course-form input[type='text'],
+.course-form select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.course-form button {
+  padding: 8px 16px;
+  margin-right: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.course-form button:last-child {
+  background-color: #dc3545;
+}
+
+.course-timings {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+.course-timings button {
+  margin-left: 10px;
+  background-color: #dc3545;
+}

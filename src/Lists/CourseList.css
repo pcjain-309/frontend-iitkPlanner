@@ -1,0 +1,45 @@
+/* CourseList.css */
+.course-list {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.course-list h2 {
+  margin-bottom: 10px;
+}
+
+.course-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.course-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.course-name {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.course-code {
+  font-size: 14px;
+  color: #888;
+}
+
+.course-list button {
+  padding: 8px 12px;
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* End CourseList.css */
