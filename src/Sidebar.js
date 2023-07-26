@@ -25,6 +25,21 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
         >
           Courses
         </li>
+
+        <li
+            className={activeTab === 'cgpaCalculator' ? 'active' : ''}
+            onClick={() => setActiveTab('cgpaCalculator')}
+        >
+          CPI Calculator
+        </li>
+
+        <li
+            className={activeTab === 'calendar' ? 'active' : ''}
+            onClick={() => setActiveTab('calendar')}
+        >
+          Weekly Schedule
+        </li>
+
         <li
           className={activeTab === 'schedule' ? 'active' : ''}
           onClick={() => setActiveTab('schedule')}
