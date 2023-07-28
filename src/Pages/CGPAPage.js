@@ -21,7 +21,7 @@ const CGPAPage = () => {
     useEffect(() => {
         console.log('In the useEffect of Course Page');
         console.log(courses);
-        fetch('http://localhost:8080/course/getAll')
+        fetch('http://localhost:8080/selectedCourse/getAll')
             .then((response) => response.json())
             .then((data) => setCourses(data))
             .catch((error) => console.error('Error fetching courses:', error));
@@ -56,6 +56,7 @@ const CGPAPage = () => {
         const cgp = totalGradePoints / totalCreditHours;
         setCgpa(cgp);
     };
+
 
     return (
         <div>

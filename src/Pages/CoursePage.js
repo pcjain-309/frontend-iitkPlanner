@@ -5,6 +5,7 @@ import CourseForm from './../Forms/CourseForm';
 import CourseEditForm from './../Forms/CourseEditForm';
 import './CoursePage.css'; // Import the CSS file
 import axios from "axios";
+import NewCourseForm from "../Forms/NewCourseForm";
 
 const CoursePage = () => {
 
@@ -15,10 +16,12 @@ const CoursePage = () => {
   useEffect( () => {
     console.log("In the useEffeect of COurse Page")
     console.log(courses)
-    fetch('http://localhost:8080/course/getAll')
+    fetch('http://localhost:8080/selectedCourse/getAll')
         .then(response => response.json())
         .then(data => setCourses(data))
         .catch(error => console.error('Error fetching courses:', error));
+    console.log("Here")
+    console.log(courses?.length)
     console.log(courses)
   }, [someValue]);
 
@@ -46,7 +49,7 @@ const CoursePage = () => {
   const handleDeleteCourse = (id) => {
     console.log(id);
     try {
-      fetch(`http://localhost:8080/course/${id}`, {
+      fetch(`http://localhost:8080/selectedCourse/${id}`, {
         method: 'DELETE',
       });
       // fetchCourses();
@@ -69,7 +72,8 @@ const CoursePage = () => {
           <div className="content">
             <div className="course-form-container">
               <h2>Add New Course</h2>
-              <CourseForm />
+              {/*<CourseForm />*/}
+              <NewCourseForm></NewCourseForm>
             </div>
             <div className="course-list-container" key={coursesList}>
               {/*<CourseList courses={coursesArray}*/}
@@ -103,7 +107,9 @@ const CoursePage = () => {
                 )}
 
                 {selectedCourse && (
+                    // <div></div>
                     <div className="edit-course-form">
+                      {console.log(selectedCourse)}
                       <CourseForm
                           course={selectedCourse}
                           onRefresh={refresh}

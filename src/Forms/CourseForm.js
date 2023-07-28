@@ -3,6 +3,9 @@ import './CourseForm.css';
 
 const CourseForm = ({course, onRefresh, endEdit}) => {
 
+  console.log(course?.length)
+  console.log(course)
+
   const [check, setCheck] = useState(true);
 
   // Helper function to generate time options from 8:00 AM to 6:30 PM with 15 minutes interval
@@ -59,7 +62,7 @@ const CourseForm = ({course, onRefresh, endEdit}) => {
 
   const handleAddCourse = (newCourse) => {
     console.log(newCourse);
-    fetch('http://localhost:8080/course/add', {
+    fetch('http://localhost:8080/selectedCourse/add', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -78,7 +81,7 @@ const CourseForm = ({course, onRefresh, endEdit}) => {
   const handleUpdateCourse =  (updatedCourse) => {
     try {
       // console.log(updatedCourse);
-      fetch(`http://localhost:8080/course/${updatedCourse.id}`, {
+      fetch(`http://localhost:8080/selectedCourse/${updatedCourse.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -154,6 +157,8 @@ const CourseForm = ({course, onRefresh, endEdit}) => {
   if(!check) {
     return null;
   }
+
+  console.log("Just Above return")
 
   return (
 

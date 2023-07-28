@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import './CalendarPage.css';
 
-const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+const daysOfWeek = ['M', 'T', 'W', 'Th', 'F'];
 const startTime = '08:00 AM';
 const endTime = '08:00 PM';
 
@@ -9,8 +9,14 @@ const formatTime = (date) => {
     const hour = date.getHours();
     const minute = date.getMinutes();
     const period = hour >= 12 ? 'PM' : 'AM';
-    return `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')} ${period}`;
+
+    // Add leading zeroes for hour and minute
+    const formattedHour = hour.toString().padStart(2, '0');
+    const formattedMinute = minute.toString().padStart(2, '0');
+
+    return `${formattedHour}:${formattedMinute} ${period}`;
 };
+
 
 const CalendarPage = () => {
     const [courses, setCourses] = useState([]);
@@ -18,7 +24,7 @@ const CalendarPage = () => {
     useEffect(() => {
         console.log('In the useEffect of Calendar Page');
         // console.log(courses);
-        fetch('http://localhost:8080/course/getAll')
+        fetch('http://localhost:8080/selectedCourse/getAll')
             .then((response) => response.json())
             .then((data) => setCourses(data))
             .catch((error) => console.error('Error fetching courses:', error));
@@ -86,6 +92,8 @@ const CalendarPage = () => {
             </tr>
         );
     };
+
+    console.log(courses)
 
     return (
         <div className="calendar-page">
