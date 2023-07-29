@@ -46,6 +46,13 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
         >
           Schedule
         </li>
+
+        <li
+            className={activeTab === 'login' ? 'active' : ''}
+            onClick={() => setActiveTab('login')}
+        >
+          Login
+        </li>
       </ul>
     </div>
   );
