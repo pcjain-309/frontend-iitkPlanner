@@ -6,6 +6,7 @@ import TaskPage from './Pages/TaskPage';
 import CoursePage from './Pages/CoursePage';
 import CGPAPage from "./Pages/CGPAPage";
 import CalendarPage from "./Pages/CalendarPage";
+import Login from "./Pages/Login";
 
 const MainPage = () => {
   const [activeTab, setActiveTab] = useState('home');
@@ -22,6 +23,8 @@ const MainPage = () => {
         {activeTab === 'cgpaCalculator' && <CGPAPage></CGPAPage>}
           {activeTab === 'calendar' && <CalendarPage></CalendarPage>}
         {activeTab === 'schedule' && <div>Schedule Content</div>}
+
+          {activeTab === 'login' && <Login></Login>}
       </main>
     </div>
   );
