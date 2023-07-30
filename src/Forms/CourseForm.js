@@ -34,14 +34,14 @@ const CourseForm = ({course, onRefresh, endEdit}) => {
       timings: updatedTimings,
     });
   };
-
+  
 
   const timeOptions = generateTimeOptions();
   const [courseData, setCourseData] = useState({
     id : course ? course.id : null,
     name: '',
     courseCode: '',
-    credits: 9,
+    credits: '',
     professor: '',
     timings: [{ startTime: '08:00 AM', endTime: '08:15 AM', day : 'Monday' }],
   });
@@ -52,7 +52,7 @@ const CourseForm = ({course, onRefresh, endEdit}) => {
         id: course.id,
         name: course.name,
         courseCode: course.courseCode,
-        credits: parseInt(course.credits),
+        credits: course.credits,
         professor: course.professor,
         timings: course.timings,
       });
@@ -80,27 +80,16 @@ const CourseForm = ({course, onRefresh, endEdit}) => {
 
   const handleUpdateCourse =  (updatedCourse) => {
     try {
-          console.log(updatedCourse);
-      const authToken = localStorage.getItem('authToken');
-      const auth = "Bearer " + authToken;
-      // Make the API call to update the course details
-
-      console.log(authToken, updatedCourse, auth);
-      fetch('http://localhost:8080/auth/updateCourse', {
-        method: 'POST',
+      // console.log(updatedCourse);
+      fetch(`http://localhost:8080/selectedCourse/${updatedCourse.id}`, {
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': auth, // Set the authToken in the request headers
         },
         body: JSON.stringify(updatedCourse),
-      })
-          .then((response) => response.json())
-          .then((data) => {
-            // Handle the response (e.g., show a success message)
-            console.log('Course details updated successfully!', data);
-          });
-    }
-    catch (error) {
+      });
+      // fetchCourses();
+    } catch (error) {
       console.error('Error updating course:', error);
     }
     // console.log(updatedCourse);
@@ -115,17 +104,11 @@ const CourseForm = ({course, onRefresh, endEdit}) => {
     if (
       courseData.name.trim() !== '' &&
       courseData.courseCode.trim() !== '' &&
+      // courseData.credits.trim() !== '' &&
       courseData.professor.trim() !== ''
     ) {
       if (course) {
-
-        // const credits = parseInt(courseData.credits);
-
-        // setCourseData({
-        //   ...courseData,
-        //   credits: credits,
-        // });
-        console.log(courseData)
+        // console.log(courseData)
         handleUpdateCourse(courseData);
         setCheck(false);
         console.log("Refrshing...")
@@ -139,7 +122,7 @@ const CourseForm = ({course, onRefresh, endEdit}) => {
         setCourseData({
           name: '',
           courseCode: '',
-          credits: 9,
+          credits: '',
           professor: '',
           timings: [{ startTime: '08:00 AM', endTime: '08:15 AM', day: 'Monday' }],
         });
@@ -203,9 +186,9 @@ const CourseForm = ({course, onRefresh, endEdit}) => {
       <div>
         <label>Credits:</label>
         <input
-          type="number"
+          type="text"
           name="credits"
-          value={parseInt(courseData.credits)}
+          value={courseData.credits}
           onChange={handleChange}
           placeholder="Enter course credits"
         />

@@ -16,26 +16,10 @@ const CoursePage = () => {
   useEffect( () => {
     console.log("In the useEffeect of COurse Page")
     console.log(courses)
-    const authToken = localStorage.getItem("authToken")
-    const apiUrl = 'http://localhost:8080/auth/user/selectedCourses';
-    axios.get(apiUrl, {
-      headers: {
-        Authorization: `Bearer ${authToken}`,
-      },
-    }).then((response) => {
-      console.log(response)
-      // Check if the response is successful (status code 2xx)
-      if (response.status >= 200 && response.status < 300) {
-        // Handle the data
-        setCourses(response.data);
-      } else {
-        console.error('Network response was not ok');
-      }
-    })
-        .catch((error) => {
-          // Handle errors
-          console.error('Error fetching courses:', error);
-        });
+    fetch('http://localhost:8080/selectedCourse/getAll')
+        .then(response => response.json())
+        .then(data => setCourses(data))
+        .catch(error => console.error('Error fetching courses:', error));
     console.log("Here")
     console.log(courses?.length)
     console.log(courses)
