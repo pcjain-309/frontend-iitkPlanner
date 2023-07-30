@@ -78,20 +78,17 @@ const NewCourseForm = () => {
         console.log(formattedTimings);
 
         const updatedCourseDetails = { ...editedCourseDetails, timings: formattedTimings };
-        // Update the editedCourseDetails with the formatted timings
-        // setEditedCourseDetails((prev) => ({
-        //     ...prev,
-        //     timings: formattedTimings,
-        // }));
-
-        // Make an API call to the backend to save the edited course details
-
         console.log(updatedCourseDetails)
-        // c
-        fetch('http://localhost:8080/selectedCourse/add', {
+        const authToken = localStorage.getItem("authToken");
+
+        const auth = "Bearer " + authToken;// Replace this with the actual auth token from the request
+
+        console.log(auth, updatedCourseDetails)
+        fetch('http://localhost:8080/auth/addCourse', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': auth, // Include the auth token in the "Authorization" header
             },
             body: JSON.stringify(updatedCourseDetails),
         })
@@ -99,10 +96,6 @@ const NewCourseForm = () => {
             .then((data) => {
                 // Handle the post-submission action (e.g., show a success message)
                 console.log('Course details submitted successfully!', data);
-            })
-            .catch((error) => {
-                console.error('Error submitting course details:', error);
-                setError('An error occurred while submitting course details.');
             });
         setCourseCode('');
         setCourseDetails(null);
