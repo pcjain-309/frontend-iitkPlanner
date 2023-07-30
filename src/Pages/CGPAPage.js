@@ -1,6 +1,7 @@
 // CGPACalculator.js
 import React, { useEffect, useState } from 'react';
 import './CGPAPage.css';
+import axios from "axios";
 
 const gradeScores = {
     A: 10,
@@ -21,10 +22,31 @@ const CGPAPage = () => {
     useEffect(() => {
         console.log('In the useEffect of Course Page');
         console.log(courses);
-        fetch('http://localhost:8080/selectedCourse/getAll')
-            .then((response) => response.json())
-            .then((data) => setCourses(data))
-            .catch((error) => console.error('Error fetching courses:', error));
+        // fetch('http://localhost:8080/selectedCourse/getAll')
+        //     .then((response) => response.json())
+        //     .then((data) => setCourses(data))
+        //     .catch((error) => console.error('Error fetching courses:', error));
+
+        const authToken = localStorage.getItem("authToken")
+        const apiUrl = 'http://localhost:8080/auth/user/selectedCourses';
+        axios.get(apiUrl, {
+            headers: {
+                Authorization: `Bearer ${authToken}`,
+            },
+        }).then((response) => {
+            console.log(response)
+            // Check if the response is successful (status code 2xx)
+            if (response.status >= 200 && response.status < 300) {
+                // Handle the data
+                setCourses(response.data);
+            } else {
+                console.error('Network response was not ok');
+            }
+        })
+            .catch((error) => {
+                // Handle errors
+                console.error('Error fetching courses:', error);
+            });
 
         console.log(courses?.length);
         console.log(courses)
